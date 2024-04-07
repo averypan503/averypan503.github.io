@@ -1,0 +1,100 @@
+/* https://blog.csdn.net/m0_59708269/article/details/122581617 */
+/* border 实现三角形 */
+/* 容器宽高为0，border不为0，这时border平分，实现三角形 */
+.triangle{
+    width: 0;
+    height: 0;
+    /* background-color: gray;
+    border-radius: 50px 50px 0 0 ; */
+    border: 50px solid transparent;
+    border-color: red blue green yellow;
+}
+/* border-radius实现半圆 */
+/* 宽高为0，border不为0，border加radius，实际就是三角形外边加了radius变成扇形，再旋转下 */
+.circle {
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-radius: 50px;
+    border-color: red transparent transparent red;
+    transform: rotate(45deg);
+}
+/* 滤镜 模糊/全屏变色 filter */
+/* blur模糊， grayscale灰度 */
+/* https://segmentfault.com/a/1190000042099972 */
+/* html {
+    filter: blur(2px);
+    filter: grayscale(100%);
+} */
+
+/* 居中 */
+.p1 {
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+    /* 2. flex居中, 可实现水平，垂直居中*/
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* 3. grid 居中 */
+    /* display: grid;
+    align-items: center;
+    text-align: center; */
+    /* 4,定位和负边距居中 */
+    /* position: relative; */
+    padding-top: 1px;
+}
+.c1{
+    /* 1.固定宽度的块级元素， margin：0 auto；居中 */
+    /* margin: 0 auto; */
+    /* width: 100px; */
+    /* 4,定位和负边距居中, left,top歌50%，然后移动自身的-50%实现居中 */
+    /* position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
+    /* 固定宽度的话。cal计算居中 */
+    /* -两边必须有空格 */
+    width: 100px;
+    height: 30px;
+    margin-left: calc(50% - 50px);
+    /* margin-top: 50%是宽度的50%，并不是高度的50% */
+    margin-top: calc(50% - 15px);
+    background-color: red;
+}
+/*
+*  flex布局
+*  父元素flex，子元素自动成为flex成员
+*  属性：
+*  flex-direction 主轴方向，排列的方向 row|row-reverse|column|column-reverse
+*  flex-wrap 如果轴线排不下，如何换行 norwrap|wrap|wrap-reverse
+*  flex-flow 上面2个的简写  flex-direction flex-wrap
+*  justify-content 主轴的对齐方式 flex-start|flex-end|center|space-between|sapce-around
+*  align-items 纵向交叉轴如何对齐， 未设置将占满高度
+*  align-content
+*/
+
+/* https://blog.csdn.net/qq_44376306/article/details/133667493
+*  回流 重新计算大小，位置信息，代价高，影响页面性能
+*  重绘 渲染样式，颜色，边框，文本样式，直接使用js修改样式，代价小，不涉及元素位置和大小的计算
+*  避免回流
+*  1.尽量一次修改，多次修改保存再对象，数组中，一次性的设置给元素
+*  2.DocumentFrament
+*  3.避免使用getComputedStyle， 会强制回流操作
+*  4.position absolute/fixed 从文档流脱离，引起回流但是开销较小
+*/
+/*
+*  Js优化
+*  1.减少对DOM的访问  DcoumentFragment 文档片段，多次修改存在fragMent中再一次性添加到页面
+*  2.合理使用防抖（去弹跳）和节流
+*  3.使用import而非require
+*/
+/*
+*  网站整体优化
+*  1.使用CDN
+*  2.压缩代码
+*  3.减少HTTP请求
+*  4.使用懒加载
+*  5.图片优化
+*  6.使用缓存
+*/
